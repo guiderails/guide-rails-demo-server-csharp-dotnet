@@ -8,11 +8,19 @@ using SharedLib;
 namespace Server {
 	class ResponseGenerator {
 
+		private readonly RegistryOperations registryOperations;
+
+		public ResponseGenerator(RegistryOperations regops = null) {
+			if (null == regops) {
+				registryOperations = new SharedLib.RegistryOperations();
+			} else {
+				registryOperations = regops;
+			}
+		}
+
 		public string GetResponseString() {
-			// string response = @"<html><body>{{message}}</body></html>";
 			string response = @"Server says: {{message}}";
-			var ro = new SharedLib.RegistryOperations();
-			response = response.Replace("{{message}}", ro.GetMessage());
+			response = response.Replace("{{message}}", registryOperations.GetMessage());
 			return response;
 		}
 	}
