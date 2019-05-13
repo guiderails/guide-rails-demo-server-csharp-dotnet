@@ -32,7 +32,7 @@
 					{
 						"name": "Restore",
 						"definition": "Restore with nuget",
-						"command": "msbuild /restore",
+						"command": "nuget restore",
 						"properties": null
 					},
 					{
@@ -70,10 +70,7 @@
 								"message": "Test message"
 							}
 						],
-						"code_analysis": {
-							"publish": false,
-							"properties": null
-						}
+						"code_analysis": null
 					},
 					"on_failure": {
 						"notifications": [
@@ -84,10 +81,7 @@
 								"message": "Segment Failure"
 							}
 						],
-						"code_analysis": {
-							"publish": false,
-							"properties": null
-						}
+						"code_analysis": null
 					},
 					"on_abort": {
 						"notifications": [
@@ -98,10 +92,7 @@
 								"message": "Segment Aborted"
 							}
 						],
-						"code_analysis": {
-							"publish": false,
-							"properties": null
-						}
+						"code_analysis": null
 					}
 				},
 				"deployment_strategy": {
@@ -210,32 +201,31 @@
 				}
 			}
 		},
-		"default_properties": null,
-		"deployment_files": [
+		"default_properties": [
 			{
-				"source_path": "ci/config/application.config",
-				"target_path": "config/application.config"
+				"name": "consul.tag",
+				"value": "((application.shortsha))",
+				"type": "string"
 			},
 			{
-				"source_path": "ci/config/service-registry.erb",
-				"target_path": "config/service-registry.json"
+				"name": "consul.servicename",
+				"value": "((application.name))",
+				"type": "string"
 			},
 			{
-				"source_path": "ci/bin/start-service.sh",
-				"target_path": "bin/start-service.sh"
-			},
-			{
-				"source_path": "ci/bin/execute-tests.sh",
-				"target_path": "bin/execute-tests.sh"
+				"name": "source_dirs",
+				"value": ".gitignore",
+				"type": "string"
 			}
 		],
+		"deployment_files": [],
 		"application_init": {
 			"command": "",
 			"arguments": null
 		},
 		"process": {
 			"init": {
-				"command": "bin/start-service.sh"
+				"command": ""
 			}
 		},
 		"releases": []
