@@ -326,7 +326,12 @@
 							{
 								"name": "set_password",
 								"release": "windows-utilities",
-								"properties": [],
+								"properties": [
+									{
+										"name": "set_password.password",
+										"value": "Int3g2019!"
+									}
+								],
 								"deployment_strategy": {
 									"canary_watch_time": "2000-60000",
 									"update_watch_time": "2000-60000",
