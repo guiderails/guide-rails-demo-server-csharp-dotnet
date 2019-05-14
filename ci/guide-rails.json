@@ -40,6 +40,12 @@
 						"definition": "Build debug files",
 						"command": "msbuild /t:Rebuild /p:Configuration=Debug",
 						"properties": null
+					},
+					{
+						"name": "Package",
+						"definition": "Pacakge as zip file",
+						"command": ".\\package.ps1",
+						"properties": null
 					}
 				],
 				"exit_actions": {
@@ -110,7 +116,7 @@
 						"dependencies": [],
 						"downloads": [],
 						"files": [
-							"((application.name))*"
+							"((application.name)).zip"
 						],
 						"package_install_command": "",
 						"installed_path": ""

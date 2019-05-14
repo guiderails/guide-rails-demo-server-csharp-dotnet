@@ -3,3 +3,4 @@ bin
 obj
 .vs
 *.pfx
+netdemo-server.zip
