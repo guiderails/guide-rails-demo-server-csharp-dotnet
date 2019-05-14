@@ -253,7 +253,7 @@
 						"number_of_instances": 1,
 						"persistent_disk_type": "",
 						"vm_type": "default",
-						"os_type": "default",
+						"os_type": "windows",
 						"networks": [
 							"((deploy.target.network.integration))"
 						],
@@ -307,8 +307,8 @@
 									}
 								],
 								"deployment_strategy": {
-									"canary_watch_time": "",
-									"update_watch_time": "",
+									"canary_watch_time": "2000-60000",
+									"update_watch_time": "2000-60000",
 									"serial": false
 								}
 							}
