@@ -11,4 +11,7 @@ $healthprocess = Get-Process netdemo-Server -ErrorAction SilentlyContinue
 if ($null -eq $healthprocess) {
     Get-Process
     throw [System.Exception] "application not started"
+} else {
+    Write-Host "Application has started."
+    ipconfig.exe
 }
