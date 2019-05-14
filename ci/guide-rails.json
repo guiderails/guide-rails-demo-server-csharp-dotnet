@@ -322,6 +322,16 @@
 								}
 							},
 							{
+								"name": "enable_ssh",
+								"release": "windows-utilities",
+								"properties": [],
+								"deployment_strategy": {
+									"canary_watch_time": "2000-60000",
+									"update_watch_time": "2000-60000",
+									"serial": false
+								}
+							},
+							{
 								"name": "enable_rdp",
 								"release": "windows-utilities",
 								"properties": [],
