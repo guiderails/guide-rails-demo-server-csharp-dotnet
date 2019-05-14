@@ -151,6 +151,14 @@
 				"run_after": [
 					"Build"
 				],
+				"job_steps": [
+					{
+						"name": "ipconfig",
+						"definition": "ipconfig",
+						"command": "ipconfig.exe",
+						"properties": null
+					}
+				],
 				"exit_actions": {
 					"default": {
 						"fetch_logs": true,
