@@ -417,11 +417,11 @@
 		},
 		"process": {
 			"init": {
-				"command": "ci\\start.ps1"
+				"command": "ci/start.ps1"
 			},
 			"stop": {
 				"command": [
-					"ci\\stop.ps1"
+					"ci/stop.ps1"
 				]
 			},
 			"name": "netdemo-server"
