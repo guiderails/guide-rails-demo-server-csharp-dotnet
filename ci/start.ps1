@@ -4,7 +4,12 @@ Write-Output "Extracting Archive: $archiveName"
 [io.compression.zipfile]::ExtractToDirectory($archiveName, "$env:PKG_BASE_DIR/$env:APPLICATION_NAME")
 Write-Output "Done Extracting"
 
-$Command = "$env:PKG_BASE_DIR/$env:APPLICATION_NAME/netdemo-server.exe"
+$port = "8081"
+if ($null -ne $env:DEMOSERVER_PORT) {
+    $port = $env:DEMOSERVER_PORT
+}
+
+$Command = "$env:PKG_BASE_DIR/$env:APPLICATION_NAME/netdemo-server.exe " + $port
 Invoke-Expression $Command
 
 $healthprocess = Get-Process netdemo-Server -ErrorAction SilentlyContinue
