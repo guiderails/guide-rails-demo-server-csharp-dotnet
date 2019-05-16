@@ -261,7 +261,7 @@
 						"name": "((application.name))",
 						"number_of_instances": 1,
 						"persistent_disk_type": "",
-						"vm_type": "default",
+						"vm_type": "small",
 						"os_type": "windows",
 						"networks": [
 							"((deploy.target.network.integration))"
