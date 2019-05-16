@@ -452,6 +452,11 @@
 				"name": "source_dirs",
 				"value": ".gitignore",
 				"type": "string"
+			},
+			{
+				"name": "demoserver.port",
+				"value": "8081",
+				"type": "number"
 			}
 		],
 		"deployment_files": [
