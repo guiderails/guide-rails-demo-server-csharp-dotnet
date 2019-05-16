@@ -455,7 +455,7 @@
 			},
 			{
 				"name": "demoserver.port",
-				"value": "8081",
+				"value": 8080,
 				"type": "number"
 			}
 		],
