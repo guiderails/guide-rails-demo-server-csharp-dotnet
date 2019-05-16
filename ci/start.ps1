@@ -9,7 +9,9 @@ if ($null -ne $env:DEMOSERVER_PORT) {
     $port = $env:DEMOSERVER_PORT
 }
 
-$Command = "$env:PKG_BASE_DIR/$env:APPLICATION_NAME/netdemo-server.exe " + $port
+$machine = Test-Connection $env:computername -count 1 | Select-Object Ipv4Address
+$machine = $machine.Ipv4Address
+$Command = "$env:PKG_BASE_DIR/$env:APPLICATION_NAME/netdemo-server.exe $machine $port"
 Invoke-Expression $Command
 
 $healthprocess = Get-Process netdemo-Server -ErrorAction SilentlyContinue
