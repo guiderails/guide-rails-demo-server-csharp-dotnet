@@ -155,7 +155,7 @@
 					{
 						"name": "Add Firewall Rule",
 						"definition": "Add Firewall Rule",
-						"command": "New-NetFirewallRule -Name port8080 -DisplayName \"port 8080\" -Direction Inbound -Protocol TCP -LocalPort 8080 -Action Allow",
+						"command": "Import-Module NetSecurity\nNew-NetFirewallRule -Name port8080 -DisplayName \"port 8080\" -Direction Inbound -Protocol TCP -LocalPort 8080 -Action Allow",
 						"properties": null
 					}
 				],
