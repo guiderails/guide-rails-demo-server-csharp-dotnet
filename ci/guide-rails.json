@@ -153,9 +153,9 @@
 				],
 				"job_steps": [
 					{
-						"name": "ipconfig",
-						"definition": "ipconfig",
-						"command": "ipconfig.exe",
+						"name": "Add Firewall Rule",
+						"definition": "Add Firewall Rule",
+						"command": "Import-Module NetSecurity\nNew-NetFirewallRule -Name port8080 -DisplayName \"port 8080\" -Direction Inbound -Protocol TCP -LocalPort 8080 -Action Allow",
 						"properties": null
 					}
 				],
@@ -270,57 +270,6 @@
 							"((deploy.target.zone.integration))"
 						],
 						"dependencies": [
-							{
-								"name": "consul-windows",
-								"release": "consul-windows",
-								"provides": [
-									{
-										"name": "consul_servers.as",
-										"value": "consul_1"
-									}
-								],
-								"consumes": [
-									{
-										"name": "consul_servers.from",
-										"value": "consul_1"
-									}
-								],
-								"properties": [
-									{
-										"name": "consul.servicename",
-										"value": "((consul.servicename))"
-									},
-									{
-										"name": "consul.environment",
-										"value": "((consul.environment))"
-									},
-									{
-										"name": "consul.datacenter",
-										"value": "((consul.datacenter))"
-									},
-									{
-										"name": "consul.server",
-										"value": "false"
-									},
-									{
-										"name": "consul.joinservers",
-										"value": "((consul.joinservers))"
-									},
-									{
-										"name": "calculi.intermediate.cert",
-										"value": "grsecret:tls.cert"
-									},
-									{
-										"name": "calculi.intermediate.key",
-										"value": "grsecret:tls.key"
-									}
-								],
-								"deployment_strategy": {
-									"canary_watch_time": "2000-60000",
-									"update_watch_time": "2000-60000",
-									"serial": false
-								}
-							},
 							{
 								"name": "enable_ssh",
 								"release": "windows-utilities",
@@ -455,7 +404,7 @@
 			},
 			{
 				"name": "demoserver.port",
-				"value": "8081",
+				"value": 8080,
 				"type": "number"
 			}
 		],
@@ -487,10 +436,6 @@
 		"releases": [
 			{
 				"name": "windows-utilities",
-				"version": "latest"
-			},
-			{
-				"name": "consul-windows",
 				"version": "latest"
 			}
 		]
