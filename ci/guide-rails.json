@@ -42,6 +42,12 @@
 						"properties": null
 					},
 					{
+						"name": "Test",
+						"definition": "Run Tests",
+						"command": ".\\test.ps1",
+						"properties": null
+					},
+					{
 						"name": "Package",
 						"definition": "Pacakge as zip file",
 						"command": ".\\package.ps1",
