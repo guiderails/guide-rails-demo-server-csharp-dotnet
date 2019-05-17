@@ -5,3 +5,4 @@ obj
 *.pfx
 netdemo-server.zip
 TestResults
+coverage.xml
