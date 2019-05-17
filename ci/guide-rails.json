@@ -412,6 +412,11 @@
 				"name": "demoserver.port",
 				"value": 8080,
 				"type": "number"
+			},
+			{
+				"name": "additional_properties_file",
+				"value": "local-sonar-project.properties",
+				"type": "string"
 			}
 		],
 		"deployment_files": [
