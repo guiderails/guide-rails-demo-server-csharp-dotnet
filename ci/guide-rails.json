@@ -48,6 +48,12 @@
 						"properties": null
 					},
 					{
+						"name": "Make Cobertura Report",
+						"definition": "convert report to cobertura format",
+						"command": ".\\makereport.ps1",
+						"properties": null
+					},
+					{
 						"name": "Package",
 						"definition": "Pacakge as zip file",
 						"command": ".\\package.ps1",
