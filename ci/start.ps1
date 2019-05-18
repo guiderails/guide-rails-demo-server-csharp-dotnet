@@ -1,4 +1,5 @@
 Add-Type -assembly "system.io.compression.filesystem"
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 # installing 7-Zip
 Invoke-WebRequest -OutFile 7z1900-x64.msi https://www.7-zip.org/a/7z1900-x64.msi
