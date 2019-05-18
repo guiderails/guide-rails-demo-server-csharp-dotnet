@@ -9,10 +9,17 @@ namespace Server {
 
 		static void Main(string[] args) {
 			bool done = false;
+			string port = "8080",
+				machine = "localhost";
+			if (args.Length == 2) {
+				port = args[1];
+				machine = args[0];
+			}
 			try {
 				listener = new HttpListener();
-				listener.Prefixes.Add("http://localhost:8080/");
-				Console.WriteLine("Starting server on port 8080");
+				listener.Prefixes.Add("http://"+machine+":"+port+"/");
+				Console.WriteLine("Using machine: " + machine);
+				Console.WriteLine("Starting server on port: " + port);
 				listener.Start();
 			} catch (Exception ex) {
 				Console.WriteLine(ex.Message);
