@@ -1,2 +1,10 @@
-$r = Invoke-WebRequest http://localhost:8080/
-if (200 -ne $r.StatusCode) { throw "Integration test failed" }
+$port = "8080"
+if ($null -ne $env:DEMOSERVER.PORT) {
+    $port = $env:DEMOSERVER.PORT
+}
+
+$r = Invoke-WebRequest "http://localhost:$port/"
+if (200 -ne $r.StatusCode) {
+    throw "Integration test failed"
+}
+Write-Host "Integration tests passed!"
