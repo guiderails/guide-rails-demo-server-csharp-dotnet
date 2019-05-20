@@ -169,12 +169,6 @@
 						"definition": "Add Firewall Rule",
 						"command": "Import-Module NetSecurity\nNew-NetFirewallRule -Name port8080 -DisplayName \"port 8080\" -Direction Inbound -Protocol TCP -LocalPort 8080 -Action Allow",
 						"properties": null
-					},
-					{
-						"name": "Integration Test",
-						"definition": "Integration Test",
-						"command": "$r = Invoke-WebRequest http://localhost:8080/\nif (200 -ne $r.StatusCode) { throw \"Integration test failed\" }",
-						"properties": null
 					}
 				],
 				"exit_actions": {
