@@ -173,7 +173,12 @@
 					{
 						"name": "Integration Tests",
 						"definition": "Integration Tests",
-						"command": ".\\it.ps1",
+						"command": ".\\it.ps1"
+					},
+					{
+						"name": "jmeter",
+						"definition": "jmeter",
+						"command": "$env:Path += \";$env:PKG_BASE_DIR/jdk/openjdk/bin;$env:PKG_BASE_DIR/jmeter/bin\"\njmeter -n -t ci/pt.jmx -l $env:TEST_LOGS_DIR/results.jtl",
 						"properties": null
 					}
 				],
@@ -447,6 +452,10 @@
 			{
 				"source_path": "it.ps1",
 				"target_path": "it.ps1"
+			},
+			{
+				"source_path": "netdemo-Server/pt.jmx",
+				"target_path": "ci/pt.jmx"
 			}
 		],
 		"application_init": {
