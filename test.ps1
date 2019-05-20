@@ -8,8 +8,7 @@ if ($null -ne $env:VSINSTALLDIR_2017) {
 
 MSBuild.exe /restore /t:Rebuild /p:Configuration=debug
 
-$proc = Start-Process "$VSINSTALLDIR_2017\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe" -ArgumentList "/EnableCodeCoverage netdemo-Server\bin\Debug\netdemo-Server.exe /Logger:trx" -PassThru -NoNewWindow
-$proc.WaitForExit()
+$proc = Start-Process "$VSINSTALLDIR_2017\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe" -ArgumentList "/TestCaseFilter:Category!=Integration /EnableCodeCoverage netdemo-Server\bin\Debug\netdemo-Server.exe /Logger:trx" -PassThru -NoNewWindow -Wait
 "Exit code: {0}", $proc.ExitCode
 
 $i = 0

@@ -9,5 +9,10 @@ namespace Server.Tests {
 			ResponseGenerator rg = new ResponseGenerator();
 			Assert.NotNull(rg);
 		}
+
+		[Fact]
+		void delme() {
+			Assert.True(true);
+		}
 	}
 }

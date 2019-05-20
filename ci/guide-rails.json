@@ -169,6 +169,12 @@
 						"definition": "Add Firewall Rule",
 						"command": "Import-Module NetSecurity\nNew-NetFirewallRule -Name port8080 -DisplayName \"port 8080\" -Direction Inbound -Protocol TCP -LocalPort 8080 -Action Allow",
 						"properties": null
+					},
+					{
+						"name": "Integration Tests",
+						"definition": "Integration Tests",
+						"command": ".\\it.ps1",
+						"properties": null
 					}
 				],
 				"exit_actions": {
@@ -241,6 +247,10 @@
 					{
 						"source_path": "ci/stop.ps1",
 						"target_path": "ci/stop.ps1"
+					},
+					{
+						"source_path": "it.ps1",
+						"target_path": "it.ps1"
 					}
 				],
 				"deployment_strategy": {
@@ -433,6 +443,10 @@
 			{
 				"source_path": "ci/stop.ps1",
 				"target_path": "ci/stop.ps1"
+			},
+			{
+				"source_path": "it.ps1",
+				"target_path": "it.ps1"
 			}
 		],
 		"application_init": {
