@@ -48,6 +48,12 @@
 						"properties": null
 					},
 					{
+						"name": "Integration Test",
+						"definition": "Run Integration Tests",
+						"command": ".\\it.ps1",
+						"properties": null
+					},
+					{
 						"name": "Make Cobertura Report",
 						"definition": "convert report to cobertura format",
 						"command": ".\\makereport.ps1",
