@@ -331,6 +331,16 @@
 									"update_watch_time": "2000-60000",
 									"serial": false
 								}
+							},
+							{
+								"name": "jmeter",
+								"release": "jmeter",
+								"properties": [],
+								"deployment_strategy": {
+									"canary_watch_time": "2000-60000",
+									"update_watch_time": "2000-60000",
+									"serial": false
+								}
 							}
 						]
 					}
@@ -476,6 +486,10 @@
 		"releases": [
 			{
 				"name": "windows-utilities",
+				"version": "latest"
+			},
+			{
+				"name": "jmeter",
 				"version": "latest"
 			}
 		]
