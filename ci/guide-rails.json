@@ -261,8 +261,8 @@
 				"deployment_strategy": {
 					"canaries": 1,
 					"max_in_flight": 1,
-					"canary_watch_time": "5000-30000",
-					"update_watch_time": "5000-30000",
+					"canary_watch_time": "60000-300000",
+					"update_watch_time": "60000-300000",
 					"serial": false
 				},
 				"application_init": {
