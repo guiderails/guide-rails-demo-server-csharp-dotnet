@@ -3,8 +3,9 @@ if ($null -ne $env:DEMOSERVER.PORT) {
     $port = $env:DEMOSERVER.PORT
 }
 
-# $r = Invoke-WebRequest -Uri "http://localhost:$port/"
-$r = Invoke-WebRequest -Uri "http://localhost:8080/"
+$ipa = (Get-NetIPConfiguration | Where-Object {$_.IPv4DefaultGateway -ne $null -and $_.NetAdapter.Status -ne "Disconnected"}).IPv4Address.IPAddress
+
+$r = Invoke-WebRequest -Uri "http://$ipa:$port/"
 if (200 -ne $r.StatusCode) {
     throw "Integration test failed"
 }
