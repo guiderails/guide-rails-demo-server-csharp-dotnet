@@ -3,7 +3,12 @@ if ($null -ne $env:PERFORMANCE_LIMIT) {
     $limit = $env:PERFORMANCE_LIMIT
 }
 
-$pt = Import-Csv -Path results.jtl
+$resultsfile = "results.jtl"
+if ($null -ne $env:TEST_LOGS_DIR) {
+    $resultsfile = "$env:TEST_LOGS_DIR/$resultsfile"
+}
+
+$pt = Import-Csv -Path $resultsfile
 $avg = ($pt | Measure-Object -Property 'elapsed' -Average).Average
 Write-Host "Average response time: $avg"
 
