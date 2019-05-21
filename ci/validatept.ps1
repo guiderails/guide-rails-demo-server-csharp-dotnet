@@ -3,7 +3,7 @@ if ($null -ne $env:PERFORMANCE_LIMIT) {
     $limit = $env:PERFORMANCE_LIMIT
 }
 
-$pt = Import-Csv -Path .\results.jtl
+$pt = Import-Csv -Path results.jtl
 $avg = ($pt | Measure-Object -Property 'elapsed' -Average).Average
 Write-Host "Average response time: $avg"
 
