@@ -173,7 +173,7 @@
 					{
 						"name": "Integration Tests",
 						"definition": "Integration Tests",
-						"command": ".\\it.ps1"
+						"command": ".\\ci\\integration-test.ps1"
 					},
 					{
 						"name": "jmeter",
@@ -254,8 +254,12 @@
 						"target_path": "ci/stop.ps1"
 					},
 					{
-						"source_path": "it.ps1",
-						"target_path": "it.ps1"
+						"source_path": "ci/integration-test.ps1",
+						"target_path": "ci/integration-test.ps1"
+					},
+					{
+						"source_path": "ci/validatept.ps1",
+						"target_path": "vi/validatept.ps1"
 					}
 				],
 				"deployment_strategy": {
@@ -445,6 +449,11 @@
 				"type": "number"
 			},
 			{
+				"name": "performance.limit",
+				"value": 10,
+				"type": "number"
+			},
+			{
 				"name": "additional_properties_file",
 				"value": "local-sonar-project.properties",
 				"type": "string"
@@ -460,8 +469,12 @@
 				"target_path": "ci/stop.ps1"
 			},
 			{
-				"source_path": "it.ps1",
-				"target_path": "it.ps1"
+				"source_path": "ci/validatept.ps1",
+				"target_path": "ci/validatept.ps1"
+			},
+			{
+				"source_path": "ci/integration-test.ps1",
+				"target_path": "ci/integration-test.ps1"
 			},
 			{
 				"source_path": "netdemo-Server/pt.jmx",
