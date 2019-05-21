@@ -303,12 +303,32 @@
 						],
 						"dependencies": [
 							{
+								"name": "bosh-dns-windows",
+								"release": "bosh-dns-windows",
+								"properties": [],
+								"deployment_strategy": {
+									"canary_watch_time": "2000-60000",
+									"update_watch_time": "2000-60000",
+									"serial": false
+								}
+							},
+							{
+								"name": "consul-windows",
+								"release": "consul-windows",
+								"properties": [],
+								"deployment_strategy": {
+									"canary_watch_time": "2000-60000",
+									"update_watch_time": "2000-60000",
+									"serial": false
+								}
+							},
+							{
 								"name": "enable_ssh",
 								"release": "windows-utilities",
 								"properties": [],
 								"deployment_strategy": {
-									"canary_watch_time": "",
-									"update_watch_time": "",
+									"canary_watch_time": "2000-60000",
+									"update_watch_time": "2000-60000",
 									"serial": false
 								}
 							},
@@ -317,8 +337,8 @@
 								"release": "windows-utilities",
 								"properties": [],
 								"deployment_strategy": {
-									"canary_watch_time": "",
-									"update_watch_time": "",
+									"canary_watch_time": "2000-60000",
+									"update_watch_time": "2000-60000",
 									"serial": false
 								}
 							},
@@ -332,8 +352,8 @@
 									}
 								],
 								"deployment_strategy": {
-									"canary_watch_time": "",
-									"update_watch_time": "",
+									"canary_watch_time": "2000-60000",
+									"update_watch_time": "2000-60000",
 									"serial": false
 								}
 							},
@@ -342,8 +362,8 @@
 								"release": "jmeter",
 								"properties": [],
 								"deployment_strategy": {
-									"canary_watch_time": "",
-									"update_watch_time": "",
+									"canary_watch_time": "2000-60000",
+									"update_watch_time": "2000-60000",
 									"serial": false
 								}
 							}
@@ -504,6 +524,14 @@
 			},
 			{
 				"name": "jmeter",
+				"version": "latest"
+			},
+			{
+				"name": "bosh-dns-windows",
+				"version": "latest"
+			},
+			{
+				"name": "consul-windows",
 				"version": "latest"
 			}
 		]
