@@ -305,7 +305,12 @@
 							{
 								"name": "bosh-dns-windows",
 								"release": "bosh-dns-windows",
-								"properties": [],
+								"properties": [
+									{
+										"name": "address",
+										"value": "((consul.joinservers))"
+									}
+								],
 								"deployment_strategy": {
 									"canary_watch_time": "2000-60000",
 									"update_watch_time": "2000-60000",
@@ -315,7 +320,40 @@
 							{
 								"name": "consul-windows",
 								"release": "consul-windows",
-								"properties": [],
+								"properties": [
+									{
+										"name": "consul.servicename",
+										"value": "((consul.servicename))"
+									},
+									{
+										"name": "consul.domain",
+										"value": "((consul.domain))"
+									},
+									{
+										"name": "consul.environment",
+										"value": "((consul.environment))"
+									},
+									{
+										"name": "consul.joinservers",
+										"value": "((consul.joinservers))"
+									},
+									{
+										"name": "consul.datacenter",
+										"value": "((consul.datacenter))"
+									},
+									{
+										"name": "calculi.intermediate.cert",
+										"value": "grsecret:tls.cert"
+									},
+									{
+										"name": "calculi.intermediate.key",
+										"value": "grsecret:tls.key"
+									},
+									{
+										"name": "consul.server",
+										"value": "false"
+									}
+								],
 								"deployment_strategy": {
 									"canary_watch_time": "2000-60000",
 									"update_watch_time": "2000-60000",
