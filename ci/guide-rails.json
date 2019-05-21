@@ -132,19 +132,6 @@
 						],
 						"package_install_command": "",
 						"installed_path": ""
-					},
-					{
-						"name": "7zip",
-						"dependencies": [],
-						"downloads": [
-							{
-								"link": "https://www.7-zip.org/a/7z1900-x64.msi",
-								"name": "7z1900-x64.msi"
-							}
-						],
-						"files": [],
-						"package_install_command": "Copy-Item 7z1900-x64.msi -Destination \"$BOSH_INSTALL_TARGET\"",
-						"installed_path": ""
 					}
 				],
 				"instance_tags": [
@@ -293,8 +280,7 @@
 					}
 				},
 				"package_dependencies": [
-					"((application.name))",
-					"7zip"
+					"((application.name))"
 				],
 				"instance_tags": [
 					{
