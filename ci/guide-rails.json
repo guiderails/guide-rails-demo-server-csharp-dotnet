@@ -167,7 +167,7 @@
 					{
 						"name": "Add Firewall Rule",
 						"definition": "Add Firewall Rule",
-						"command": "Import-Module NetSecurity\nNew-NetFirewallRule -Name netdemoport-DisplayName \"netdemo server port\" -Direction Inbound -Protocol TCP -LocalPort $env:DEMOSERVER_PORT -Action Allow",
+						"command": "Import-Module NetSecurity\nNew-NetFirewallRule -Name netdemoport -DisplayName \"netdemo server port\" -Direction Inbound -Protocol TCP -LocalPort \"$env:DEMOSERVER_PORT\" -Action Allow",
 						"properties": null
 					},
 					{
