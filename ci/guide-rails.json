@@ -173,7 +173,12 @@
 					{
 						"name": "Integration Tests",
 						"definition": "Integration Tests",
-						"command": ".\\it.ps1",
+						"command": ".\\it.ps1"
+					},
+					{
+						"name": "jmeter",
+						"definition": "jmeter",
+						"command": "$ipa = (Get-NetIPConfiguration | Where-Object {$_.IPv4DefaultGateway -ne $null -and $_.NetAdapter.Status -ne \"Disconnected\"}).IPv4Address.IPAddress\n$env:Path += \";$env:PKG_BASE_DIR/jdk/openjdk/bin;$env:PKG_BASE_DIR/jmeter/bin\"\njmeter -Jip=\"$ipa\" -n -t ci/pt.jmx -l $env:TEST_LOGS_DIR/results.jtl",
 						"properties": null
 					}
 				],
@@ -256,8 +261,8 @@
 				"deployment_strategy": {
 					"canaries": 1,
 					"max_in_flight": 1,
-					"canary_watch_time": "5000-30000",
-					"update_watch_time": "5000-30000",
+					"canary_watch_time": "60000-300000",
+					"update_watch_time": "60000-300000",
 					"serial": false
 				},
 				"application_init": {
@@ -321,6 +326,16 @@
 										"value": "Int3g2019!"
 									}
 								],
+								"deployment_strategy": {
+									"canary_watch_time": "2000-60000",
+									"update_watch_time": "2000-60000",
+									"serial": false
+								}
+							},
+							{
+								"name": "jmeter",
+								"release": "jmeter",
+								"properties": [],
 								"deployment_strategy": {
 									"canary_watch_time": "2000-60000",
 									"update_watch_time": "2000-60000",
@@ -447,6 +462,10 @@
 			{
 				"source_path": "it.ps1",
 				"target_path": "it.ps1"
+			},
+			{
+				"source_path": "netdemo-Server/pt.jmx",
+				"target_path": "ci/pt.jmx"
 			}
 		],
 		"application_init": {
@@ -467,6 +486,10 @@
 		"releases": [
 			{
 				"name": "windows-utilities",
+				"version": "latest"
+			},
+			{
+				"name": "jmeter",
 				"version": "latest"
 			}
 		]
