@@ -173,12 +173,13 @@
 					{
 						"name": "Integration Tests",
 						"definition": "Integration Tests",
-						"command": ".\\ci\\integration-test.ps1"
+						"command": ".\\ci\\integration-test.ps1",
+						"properties": null
 					},
 					{
 						"name": "jmeter",
 						"definition": "jmeter",
-						"command": "$ipa = (Get-NetIPConfiguration | Where-Object {$_.IPv4DefaultGateway -ne $null -and $_.NetAdapter.Status -ne \"Disconnected\"}).IPv4Address.IPAddress\n$env:Path += \";$env:PKG_BASE_DIR/jdk/openjdk/bin;$env:PKG_BASE_DIR/jmeter/bin\"\njmeter -Jip=\"$ipa\" -n -t ci/pt.jmx -l $env:TEST_LOGS_DIR/results.jtl",
+						"command": "$ipa = (Get-NetIPConfiguration | Where-Object {$_.IPv4DefaultGateway -ne $null -and $_.NetAdapter.Status -ne \"Disconnected\"}).IPv4Address.IPAddress\n$env:Path += \";$env:PKG_BASE_DIR/jdk/openjdk/bin;$env:PKG_BASE_DIR/jmeter/bin\"\njmeter -Jip=\"$ipa\" -n -t ci/pt.jmx -l $env:TEST_LOGS_DIR/results.jtl\n.\\ci\\validatept.ps1",
 						"properties": null
 					}
 				],
@@ -259,7 +260,7 @@
 					},
 					{
 						"source_path": "ci/validatept.ps1",
-						"target_path": "vi/validatept.ps1"
+						"target_path": "ci/validatept.ps1"
 					}
 				],
 				"deployment_strategy": {
@@ -300,26 +301,21 @@
 						"availability_zones": [
 							"((deploy.target.zone.integration))"
 						],
+						"deployment_strategy": {
+							"canary_watch_time": "",
+							"update_watch_time": "",
+							"serial": false
+						},
 						"dependencies": [
 							{
 								"name": "enable_ssh",
 								"release": "windows-utilities",
-								"properties": [],
-								"deployment_strategy": {
-									"canary_watch_time": "2000-60000",
-									"update_watch_time": "2000-60000",
-									"serial": false
-								}
+								"properties": []
 							},
 							{
 								"name": "enable_rdp",
 								"release": "windows-utilities",
-								"properties": [],
-								"deployment_strategy": {
-									"canary_watch_time": "2000-60000",
-									"update_watch_time": "2000-60000",
-									"serial": false
-								}
+								"properties": []
 							},
 							{
 								"name": "set_password",
@@ -329,22 +325,12 @@
 										"name": "set_password.password",
 										"value": "Int3g2019!"
 									}
-								],
-								"deployment_strategy": {
-									"canary_watch_time": "2000-60000",
-									"update_watch_time": "2000-60000",
-									"serial": false
-								}
+								]
 							},
 							{
 								"name": "jmeter",
 								"release": "jmeter",
-								"properties": [],
-								"deployment_strategy": {
-									"canary_watch_time": "2000-60000",
-									"update_watch_time": "2000-60000",
-									"serial": false
-								}
+								"properties": []
 							}
 						]
 					}
@@ -450,7 +436,7 @@
 			},
 			{
 				"name": "performance.limit",
-				"value": 10,
+				"value": 1,
 				"type": "number"
 			},
 			{
