@@ -380,6 +380,11 @@
 								"name": "jmeter",
 								"release": "jmeter",
 								"properties": []
+							},
+							{
+								"name": "netdemo-client-Integration",
+								"release": "netdemo-client",
+								"properties": []
 							}
 						]
 					}
@@ -516,7 +521,7 @@
 				"instance_groups": [
 					{
 						"name": "((application.name))",
-						"number_of_instances": 1,
+						"number_of_instances": 3,
 						"persistent_disk_type": "",
 						"vm_type": "small",
 						"os_type": "windows",
@@ -770,6 +775,10 @@
 			},
 			{
 				"name": "consul-windows",
+				"version": "latest"
+			},
+			{
+				"name": "netdemo-client",
 				"version": "latest"
 			}
 		]
