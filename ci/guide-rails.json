@@ -167,18 +167,19 @@
 					{
 						"name": "Add Firewall Rule",
 						"definition": "Add Firewall Rule",
-						"command": "Import-Module NetSecurity\nNew-NetFirewallRule -Name port8080 -DisplayName \"port 8080\" -Direction Inbound -Protocol TCP -LocalPort 8080 -Action Allow",
+						"command": "Import-Module NetSecurity\nNew-NetFirewallRule -Name netdemoport -DisplayName \"netdemo server port\" -Direction Inbound -Protocol TCP -LocalPort \"$env:DEMOSERVER_PORT\" -Action Allow",
 						"properties": null
 					},
 					{
 						"name": "Integration Tests",
 						"definition": "Integration Tests",
-						"command": ".\\it.ps1"
+						"command": ".\\ci\\integration-test.ps1",
+						"properties": null
 					},
 					{
 						"name": "jmeter",
 						"definition": "jmeter",
-						"command": "$ipa = (Get-NetIPConfiguration | Where-Object {$_.IPv4DefaultGateway -ne $null -and $_.NetAdapter.Status -ne \"Disconnected\"}).IPv4Address.IPAddress\n$env:Path += \";$env:PKG_BASE_DIR/jdk/openjdk/bin;$env:PKG_BASE_DIR/jmeter/bin\"\njmeter -Jip=\"$ipa\" -n -t ci/pt.jmx -l $env:TEST_LOGS_DIR/results.jtl",
+						"command": "$ipa = (Get-NetIPConfiguration | Where-Object {$_.IPv4DefaultGateway -ne $null -and $_.NetAdapter.Status -ne \"Disconnected\"}).IPv4Address.IPAddress\n$env:Path += \";$env:PKG_BASE_DIR/jdk/openjdk/bin;$env:PKG_BASE_DIR/jmeter/bin\"\n$port = $env:DEMOSERVER_PORT\njmeter -Jip=\"$ipa\" -Jport=\"$port\" -n -t ci/pt.jmx -l $env:TEST_LOGS_DIR/results.jtl\n.\\ci\\validatept.ps1",
 						"properties": null
 					}
 				],
@@ -244,6 +245,12 @@
 						}
 					}
 				},
+				"properties": [
+					{
+						"name": "consul.servicename",
+						"value": "((application.name))-((application.branch))-((application.shortsha))"
+					}
+				],
 				"deployment_files": [
 					{
 						"source_path": "ci/start.ps1",
@@ -254,8 +261,12 @@
 						"target_path": "ci/stop.ps1"
 					},
 					{
-						"source_path": "it.ps1",
-						"target_path": "it.ps1"
+						"source_path": "ci/integration-test.ps1",
+						"target_path": "ci/integration-test.ps1"
+					},
+					{
+						"source_path": "ci/validatept.ps1",
+						"target_path": "ci/validatept.ps1"
 					}
 				],
 				"deployment_strategy": {
@@ -296,26 +307,65 @@
 						"availability_zones": [
 							"((deploy.target.zone.integration))"
 						],
+						"deployment_strategy": {},
 						"dependencies": [
+							{
+								"name": "bosh-dns-windows",
+								"release": "bosh-dns-windows",
+								"properties": [
+									{
+										"name": "address",
+										"value": "((consul.joinservers))"
+									}
+								]
+							},
+							{
+								"name": "consul-windows",
+								"release": "consul-windows",
+								"properties": [
+									{
+										"name": "consul.servicename",
+										"value": "((consul.servicename))"
+									},
+									{
+										"name": "consul.domain",
+										"value": "((consul.domain))"
+									},
+									{
+										"name": "consul.environment",
+										"value": "((consul.environment))"
+									},
+									{
+										"name": "consul.joinservers",
+										"value": "((consul.joinservers))"
+									},
+									{
+										"name": "consul.datacenter",
+										"value": "((consul.datacenter))"
+									},
+									{
+										"name": "calculi.intermediate.cert",
+										"value": "grsecret:tls.cert"
+									},
+									{
+										"name": "calculi.intermediate.key",
+										"value": "grsecret:tls.key"
+									},
+									{
+										"name": "consul.server",
+										"value": "false"
+									}
+								]
+							},
 							{
 								"name": "enable_ssh",
 								"release": "windows-utilities",
-								"properties": [],
-								"deployment_strategy": {
-									"canary_watch_time": "2000-60000",
-									"update_watch_time": "2000-60000",
-									"serial": false
-								}
+								"properties": []
 							},
 							{
 								"name": "enable_rdp",
 								"release": "windows-utilities",
-								"properties": [],
-								"deployment_strategy": {
-									"canary_watch_time": "2000-60000",
-									"update_watch_time": "2000-60000",
-									"serial": false
-								}
+								"properties": []
 							},
 							{
 								"name": "set_password",
@@ -325,22 +375,12 @@
 										"name": "set_password.password",
 										"value": "Int3g2019!"
 									}
-								],
-								"deployment_strategy": {
-									"canary_watch_time": "2000-60000",
-									"update_watch_time": "2000-60000",
-									"serial": false
-								}
+								]
 							},
 							{
 								"name": "jmeter",
 								"release": "jmeter",
-								"properties": [],
-								"deployment_strategy": {
-									"canary_watch_time": "2000-60000",
-									"update_watch_time": "2000-60000",
-									"serial": false
-								}
+								"properties": []
 							}
 						]
 					}
@@ -445,6 +485,11 @@
 				"type": "number"
 			},
 			{
+				"name": "performance.limit",
+				"value": 7,
+				"type": "number"
+			},
+			{
 				"name": "additional_properties_file",
 				"value": "local-sonar-project.properties",
 				"type": "string"
@@ -460,8 +505,16 @@
 				"target_path": "ci/stop.ps1"
 			},
 			{
-				"source_path": "it.ps1",
-				"target_path": "it.ps1"
+				"source_path": "ci/service_registry.erb",
+				"target_path": "ci/service-registry.json"
+			},
+			{
+				"source_path": "ci/validatept.ps1",
+				"target_path": "ci/validatept.ps1"
+			},
+			{
+				"source_path": "ci/integration-test.ps1",
+				"target_path": "ci/integration-test.ps1"
 			},
 			{
 				"source_path": "netdemo-Server/pt.jmx",
@@ -490,6 +543,14 @@
 			},
 			{
 				"name": "jmeter",
+				"version": "latest"
+			},
+			{
+				"name": "bosh-dns-windows",
+				"version": "latest"
+			},
+			{
+				"name": "consul-windows",
 				"version": "latest"
 			}
 		]
