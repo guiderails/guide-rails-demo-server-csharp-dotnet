@@ -380,6 +380,11 @@
 								"name": "netdemo-client-Integration",
 								"release": "netdemo-client",
 								"properties": []
+							},
+							{
+								"name": "netdemo-client-Integration-test",
+								"release": "netdemo-client",
+								"properties": []
 							}
 						]
 					}
@@ -554,7 +559,7 @@
 			},
 			{
 				"name": "netdemo-client",
-				"version": "0.0.4-GX-3509"
+				"version": "latest"
 			}
 		]
 	},
