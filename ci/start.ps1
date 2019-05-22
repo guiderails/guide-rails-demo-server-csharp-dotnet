@@ -1,5 +1,5 @@
 # Start: Registering service with consul
-Copy-Item $env:APPLICATION_JOB_DIR/ci/service-registry.json $env:DATA_BASE_DIR/consul-windows/ -Force
+Copy-Item "$env:APPLICATION_JOB_DIR/ci/service-registry.json" "$env:DATA_BASE_DIR/consul-windows/" -Force
 
 Write-Output "=============================== RELOAD_CONSUL ==============================="
 $env:CONSUL_HTTP_SSL=true
@@ -7,7 +7,8 @@ $env:CONSUL_CACERT="$env:TLS_CA_PATH/$env:CONSUL_ENVIRONMENT.cert.pem"
 $env:CONSUL_CLIENT_CERT="$env:TLS_CERTIFICATE"
 $env:CONSUL_CLIENT_KEY="$env:TLS_PRIVATE_KEY"
 
-$env:PKG_BASE_DIR/consul-windows/bin/consul.exe reload
+$Command = "$env:PKG_BASE_DIR/consul-windows/bin/consul.exe reload"
+Invoke-Expression $Command
 # End: Registering with Consul
 
 Add-Type -assembly "system.io.compression.filesystem"
