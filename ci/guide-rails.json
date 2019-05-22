@@ -245,6 +245,12 @@
 						}
 					}
 				},
+				"properties": [
+					{
+						"name": "consul.servicename",
+						"value": "((application.name))-((application.branch))-((application.shortsha))"
+					}
+				],
 				"deployment_files": [
 					{
 						"source_path": "ci/start.ps1",
