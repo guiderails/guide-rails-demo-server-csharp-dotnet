@@ -381,16 +381,6 @@
 								"name": "jmeter",
 								"release": "jmeter",
 								"properties": []
-							},
-							{
-								"name": "netdemo-client-Integration",
-								"release": "netdemo-client",
-								"properties": []
-							},
-							{
-								"name": "netdemo-client-Integration-test",
-								"release": "netdemo-client",
-								"properties": []
 							}
 						]
 					}
@@ -561,10 +551,6 @@
 			},
 			{
 				"name": "consul-windows",
-				"version": "latest"
-			},
-			{
-				"name": "netdemo-client",
 				"version": "latest"
 			}
 		]
