@@ -159,7 +159,6 @@
 			{
 				"name": "Integration",
 				"segment_type": "integration",
-				"persistent": false,
 				"run_after": [
 					"Build"
 				],
@@ -483,8 +482,12 @@
 						}
 					}
 				},
-				"properties": [],
-				"deployment_files": [],
+				"properties": [
+					{
+						"name": "consul.environment",
+						"value": "PROD"
+					}
+				],
 				"deployment_strategy": {
 					"canaries": 1,
 					"max_in_flight": 1,
@@ -549,7 +552,7 @@
 									},
 									{
 										"name": "consul.environment",
-										"value": "PROD"
+										"value": "((consul.environment))"
 									},
 									{
 										"name": "consul.joinservers",
