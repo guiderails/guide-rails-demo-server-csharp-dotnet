@@ -301,6 +301,7 @@
 						"availability_zones": [
 							"((deploy.target.zone.integration))"
 						],
+						"deployment_strategy": {},
 						"dependencies": [
 							{
 								"name": "bosh-dns-windows",
@@ -310,12 +311,7 @@
 										"name": "address",
 										"value": "((consul.joinservers))"
 									}
-								],
-								"deployment_strategy": {
-									"canary_watch_time": "2000-60000",
-									"update_watch_time": "2000-60000",
-									"serial": false
-								}
+								]
 							},
 							{
 								"name": "consul-windows",
@@ -353,32 +349,17 @@
 										"name": "consul.server",
 										"value": "false"
 									}
-								],
-								"deployment_strategy": {
-									"canary_watch_time": "2000-60000",
-									"update_watch_time": "2000-60000",
-									"serial": false
-								}
+								]
 							},
 							{
 								"name": "enable_ssh",
 								"release": "windows-utilities",
-								"properties": [],
-								"deployment_strategy": {
-									"canary_watch_time": "2000-60000",
-									"update_watch_time": "2000-60000",
-									"serial": false
-								}
+								"properties": []
 							},
 							{
 								"name": "enable_rdp",
 								"release": "windows-utilities",
-								"properties": [],
-								"deployment_strategy": {
-									"canary_watch_time": "2000-60000",
-									"update_watch_time": "2000-60000",
-									"serial": false
-								}
+								"properties": []
 							},
 							{
 								"name": "set_password",
@@ -388,22 +369,17 @@
 										"name": "set_password.password",
 										"value": "Int3g2019!"
 									}
-								],
-								"deployment_strategy": {
-									"canary_watch_time": "2000-60000",
-									"update_watch_time": "2000-60000",
-									"serial": false
-								}
+								]
 							},
 							{
 								"name": "jmeter",
 								"release": "jmeter",
-								"properties": [],
-								"deployment_strategy": {
-									"canary_watch_time": "2000-60000",
-									"update_watch_time": "2000-60000",
-									"serial": false
-								}
+								"properties": []
+							},
+							{
+								"name": "netdemo-client-Integration",
+								"release": "netdemo-client",
+								"properties": []
 							}
 						]
 					}
@@ -575,6 +551,10 @@
 			{
 				"name": "consul-windows",
 				"version": "latest"
+			},
+			{
+				"name": "netdemo-client",
+				"version": "0.0.4-GX-3509"
 			}
 		]
 	},
