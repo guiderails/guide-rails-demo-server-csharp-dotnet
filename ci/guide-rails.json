@@ -528,6 +528,10 @@
 				"target_path": "ci/stop.ps1"
 			},
 			{
+				"source_path": "ci/service_registry.erb",
+				"target_path": "ci/service-registry.json"
+			},
+			{
 				"source_path": "ci/validatept.ps1",
 				"target_path": "ci/validatept.ps1"
 			},
