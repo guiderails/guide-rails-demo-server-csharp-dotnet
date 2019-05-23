@@ -6,4 +6,4 @@ obj
 netdemo-server.zip
 TestResults
 coverage.xml
-results.jtl
+*.jtl

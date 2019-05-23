@@ -1,6 +1,6 @@
 $limit = 10.0
 if ($null -ne $env:PERFORMANCE_LIMIT) {
-	$limit = $env:PERFORMANCE_LIMIT
+	$limit = [single]$env:PERFORMANCE_LIMIT
 }
 
 $resultsfile = "results.jtl"
