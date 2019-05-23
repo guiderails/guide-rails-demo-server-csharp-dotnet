@@ -1,5 +1,5 @@
 # Start: Registering service with consul
-Copy-Item "$env:APPLICATION_JOB_DIR/ci/service-registry.json" "$env:DATA_BASE_DIR/consul-windows/" -Force
+Copy-Item "$env:APPLICATION_JOB_DIR/ci/service-registry.json" "$env:JOB_BASE_DIR/consul-windows/consul/" -Force
 
 Write-Output "=============================== RELOAD_CONSUL ==============================="
 $env:CONSUL_HTTP_SSL="true"

@@ -421,7 +421,7 @@
 					{
 						"name": "jmeter",
 						"definition": "jmeter",
-						"command": "$ipa = (Get-NetIPConfiguration | Where-Object {$_.IPv4DefaultGateway -ne $null -and $_.NetAdapter.Status -ne \"Disconnected\"}).IPv4Address.IPAddress\n$env:Path += \";$env:PKG_BASE_DIR/jdk/openjdk/bin;$env:PKG_BASE_DIR/jmeter/bin\"\n$port = $env:DEMOSERVER_PORT\njmeter -Jip=\"$ipa\" -Jport=\"$port\" -n -t ci/pt.jmx -l $env:TEST_LOGS_DIR/results.jtl\n.\\ci\\validatept.ps1",
+						"command": "$ipa = \"netdemo-server.service.consul\"\n$env:Path += \";$env:PKG_BASE_DIR/jdk/openjdk/bin;$env:PKG_BASE_DIR/jmeter/bin\"\n$port = $env:DEMOSERVER_PORT\njmeter -Jip=\"$ipa\" -Jport=\"$port\" -n -t ci/pt.jmx -l $env:TEST_LOGS_DIR/results.jtl\n.\\ci\\validatept.ps1",
 						"properties": null
 					}
 				],
@@ -523,7 +523,7 @@
 						"name": "((application.name))",
 						"number_of_instances": 3,
 						"persistent_disk_type": "",
-						"vm_type": "small",
+						"vm_type": "medium",
 						"os_type": "windows",
 						"networks": [
 							"((deploy.target.network.production))"
