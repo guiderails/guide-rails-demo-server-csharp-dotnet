@@ -710,7 +710,7 @@
 			},
 			{
 				"name": "performance.limit",
-				"value": 7,
+				"value": 8,
 				"type": "number"
 			},
 			{
