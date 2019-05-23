@@ -709,11 +709,6 @@
 				"type": "number"
 			},
 			{
-				"name": "performance.limit",
-				"value": 8,
-				"type": "number"
-			},
-			{
 				"name": "additional_properties_file",
 				"value": "local-sonar-project.properties",
 				"type": "string"
