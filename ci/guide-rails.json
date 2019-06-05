@@ -363,26 +363,6 @@
 								]
 							},
 							{
-								"name": "enable_ssh",
-								"release": "windows-utilities",
-								"properties": []
-							},
-							{
-								"name": "enable_rdp",
-								"release": "windows-utilities",
-								"properties": []
-							},
-							{
-								"name": "set_password",
-								"release": "windows-utilities",
-								"properties": [
-									{
-										"name": "set_password.password",
-										"value": "Int3g2019!"
-									}
-								]
-							},
-							{
 								"name": "jmeter",
 								"release": "jmeter",
 								"properties": []
@@ -588,26 +568,6 @@
 								]
 							},
 							{
-								"name": "enable_ssh",
-								"release": "windows-utilities",
-								"properties": []
-							},
-							{
-								"name": "enable_rdp",
-								"release": "windows-utilities",
-								"properties": []
-							},
-							{
-								"name": "set_password",
-								"release": "windows-utilities",
-								"properties": [
-									{
-										"name": "set_password.password",
-										"value": "Int3g2019!"
-									}
-								]
-							},
-							{
 								"name": "jmeter",
 								"release": "jmeter",
 								"properties": []
@@ -715,6 +675,11 @@
 				"type": "number"
 			},
 			{
+				"name": "performanice.limit",
+				"value": 60,
+				"type": "number"
+			},
+			{
 				"name": "additional_properties_file",
 				"value": "local-sonar-project.properties",
 				"type": "string"
@@ -762,10 +727,6 @@
 			"name": "netdemo-server"
 		},
 		"releases": [
-			{
-				"name": "windows-utilities",
-				"version": "latest"
-			},
 			{
 				"name": "jmeter",
 				"version": "latest"
