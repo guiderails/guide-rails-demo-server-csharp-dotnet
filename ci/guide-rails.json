@@ -144,6 +144,7 @@
 			{
 				"name": "Integration",
 				"segment_type": "integration",
+				"persistent": true,
 				"run_after": [
 					"Build"
 				],
@@ -279,7 +280,7 @@
 						"cloud_provider_type": "aws",
 						"cloud_provider_name": "guide-rails",
 						"vm_type": "small",
-						"os_type": "default",
+						"os_type": "windows2012R2",
 						"networks": [
 							"integration"
 						],
@@ -481,7 +482,7 @@
 						"cloud_provider_type": "aws",
 						"cloud_provider_name": "guide-rails",
 						"vm_type": "medium",
-						"os_type": "default",
+						"os_type": "windows2012R2",
 						"networks": [
 							"production"
 						],
@@ -691,25 +692,7 @@
 				]
 			},
 			"name": "netdemo-server"
-		},
-		"releases": [
-			{
-				"name": "jmeter",
-				"version": "latest"
-			},
-			{
-				"name": "bosh-dns-windows",
-				"version": "latest"
-			},
-			{
-				"name": "consul-windows",
-				"version": "latest"
-			},
-			{
-				"name": "netdemo-client",
-				"version": "latest"
-			}
-		]
+		}
 	},
 	"organization": {
 		"orgname": "Onboarding-Demo"
