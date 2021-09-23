@@ -303,6 +303,8 @@
 					{
 						"name": "((application.name))",
 						"number_of_instances": 1,
+						"cloud_provider_type": "aws",
+						"cloud_provider_name": "guide-rails",
 						"persistent_disk_type": "",
 						"vm_type": "small",
 						"os_type": "windows",
@@ -508,6 +510,8 @@
 					{
 						"name": "((application.name))",
 						"number_of_instances": 3,
+						"cloud_provider_type": "aws",
+						"cloud_provider_name": "guide-rails",
 						"persistent_disk_type": "",
 						"vm_type": "medium",
 						"os_type": "windows",
