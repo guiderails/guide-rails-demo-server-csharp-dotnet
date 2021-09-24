@@ -279,7 +279,7 @@
 						"number_of_instances": 1,
 						"cloud_provider_type": "aws",
 						"cloud_provider_name": "guide-rails",
-						"vm_type": "small",
+						"vm_type": "windows-small",
 						"os_type": "windows2012R2",
 						"networks": [
 							"integration"
@@ -341,11 +341,6 @@
 								"name": "jmeter",
 								"release": "jmeter",
 								"properties": []
-							},
-							{
-								"name": "netdemo-client-Integration",
-								"release": "netdemo-client",
-								"properties": []
 							}
 						]
 					}
@@ -365,10 +360,6 @@
 					},
 					{
 						"name": "jmeter",
-						"version": "latest"
-					},
-					{
-						"name": "netdemo-client",
 						"version": "latest"
 					}
 				]
@@ -481,7 +472,7 @@
 						"number_of_instances": 3,
 						"cloud_provider_type": "aws",
 						"cloud_provider_name": "guide-rails",
-						"vm_type": "medium",
+						"vm_type": "windows-medium",
 						"os_type": "windows2012R2",
 						"networks": [
 							"production"
