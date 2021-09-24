@@ -110,7 +110,7 @@
 							{
 								"name": "Restore",
 								"definition": "Restore with nuget",
-								"command": "nuget restore",
+								"command": "nuget restore\ndir",
 								"properties": null
 							},
 							{
