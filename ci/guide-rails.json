@@ -341,6 +341,11 @@
 								"name": "jmeter",
 								"release": "jmeter",
 								"properties": []
+							},
+							{
+								"name": "enable_ssh",
+								"release": "windows-utilities",
+								"properties": []
 							}
 						]
 					}
@@ -360,6 +365,10 @@
 					},
 					{
 						"name": "jmeter",
+						"version": "latest"
+					},
+					{
+						"name": "windows-utilities",
 						"version": "latest"
 					}
 				]
