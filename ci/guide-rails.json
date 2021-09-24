@@ -157,7 +157,7 @@
 					{
 						"name": "Integration Tests",
 						"definition": "Integration Tests",
-						"command": ".\\ci\\integration-test.ps1",
+						"command": "$port = \"8080\"\nif ($null -ne $env:DEMOSERVER.PORT) {\n    $port = $env:DEMOSERVER.PORT\n}\n\n$ipa = (Get-NetIPConfiguration | Where-Object {$_.IPv4DefaultGateway -ne $null -and $_.NetAdapter.Status -ne \"Disconnected\"}).IPv4Address.IPAddress\n\n$r = Invoke-WebRequest -Uri \"http://${ipa}:${port}/\" -UseBasicParsing\nif (200 -ne $r.StatusCode) {\n    throw \"Integration test failed\"\n}\nWrite-Host \"Integration tests passed!\"\n\n.\\ci\\integration-test.ps1",
 						"properties": null
 					},
 					{
